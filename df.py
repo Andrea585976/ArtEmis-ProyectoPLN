@@ -4,7 +4,7 @@ import pandas as pd
 def create_df(image_dir, csv_path):
     df = pd.read_csv(csv_path)
     #Columna con ruta de img
-    df['image_path'] = df['painting'].apply(lambda _: os.path.join(image_dir, _))
+    df['image_path'] = df['painting'].apply(lambda _: os.path.join(image_dir, _) + '.jpg')
     return df
 
 def format_df(df):
@@ -36,3 +36,5 @@ if __name__ == "__main__":
     train_df, val_df = split_data(df)
 
     print(train_df.head())
+    print(train_df['image_path'].iloc[0])
+
